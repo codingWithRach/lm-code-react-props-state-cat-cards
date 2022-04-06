@@ -10,7 +10,6 @@ import cat9 from "../assets/images/cat9.jpg";
 import cat10 from "../assets/images/cat10.jpg";
 import cat11 from "../assets/images/cat11.jpg";
 import cat12 from "../assets/images/cat12.jpg";
-import CatImage from "./cat_image";
 
 const images = [
   {
@@ -110,42 +109,5 @@ const images = [
     attributionUrl: "https://www.flickr.com/people/x-oph/",
   },
 ];
-interface CatCardProps {
-  name: string;
-  species: string;
-  favFoods: Array<string>;
-  birthYear: number;
-  catIndex: number;
-}
 
-// const CatCard: React.FC<CatCardProps> = (props) => {
-const CatCard: React.FC<CatCardProps> = ({
-  name,
-  species,
-  favFoods,
-  birthYear,
-  catIndex,
-}) => (
-  <div className="card">
-    <h3 className="card__text card__header">{name}</h3>
-    <p className="card__text">Species: {species}</p>
-    <p className="card__text">Favourite Food(s): {favFoods}</p>
-    <p className="card__text">Birth Year: {birthYear}</p>
-
-    {
-      // only render an image if there's a corresponding entry in our images array
-      catIndex < images.length && (
-        <CatImage
-          image={images[catIndex].image}
-          altText={images[catIndex].altText}
-          licenceType={images[catIndex].licenceType}
-          licenceUrl={images[catIndex].licenceUrl}
-          attributionName={images[catIndex].attributionName}
-          attributionUrl={images[catIndex].attributionUrl}
-        />
-      )
-    }
-  </div>
-);
-
-export default CatCard;
+export default images;

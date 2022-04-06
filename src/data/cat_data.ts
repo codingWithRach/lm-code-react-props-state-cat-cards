@@ -78,7 +78,7 @@ const catData: Array<Cat> = [
   {
     name: "Captain Catface",
     species: "Sea Cattain",
-    favFoods: ["fish, rum"],
+    favFoods: ["fish", "rum"],
     birthYear: 2016,
   },
 ];
