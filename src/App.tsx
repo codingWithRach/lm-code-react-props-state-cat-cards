@@ -81,8 +81,6 @@ function App() {
     },
   ]);
 
-  console.log("Our pretties 😻: ", cats);
-
   return (
     <>
       <Navbar />
