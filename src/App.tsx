@@ -88,7 +88,9 @@ function App() {
       <Header />
 
       <main>
-        <div className="cards__wrapper">{/* JSX code can go here */}</div>
+        <div className="cards__wrapper">
+          <CatCard />
+        </div>
       </main>
 
       <Footer />
