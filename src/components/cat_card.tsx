@@ -124,14 +124,20 @@ const CatCard: React.FC<CatCardProps> = (props) => (
     <p className="card__text">Species: {props.species}</p>
     <p className="card__text">Favourite Food(s): {props.favFoods}</p>
     <p className="card__text">Birth Year: {props.birthYear}</p>
-    <CatImage
-      image={images[props.catIndex].image}
-      altText={images[props.catIndex].altText}
-      licenceType={images[props.catIndex].licenceType}
-      licenceUrl={images[props.catIndex].licenceUrl}
-      attributionName={images[props.catIndex].attributionName}
-      attributionUrl={images[props.catIndex].attributionUrl}
-    />
+
+    {
+      // only render an image if there's a corresponding entry in our images array
+      props.catIndex < images.length && (
+        <CatImage
+          image={images[props.catIndex].image}
+          altText={images[props.catIndex].altText}
+          licenceType={images[props.catIndex].licenceType}
+          licenceUrl={images[props.catIndex].licenceUrl}
+          attributionName={images[props.catIndex].attributionName}
+          attributionUrl={images[props.catIndex].attributionUrl}
+        />
+      )
+    }
   </div>
 );
 
