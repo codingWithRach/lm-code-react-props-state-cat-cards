@@ -4,14 +4,13 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import { useState } from "react";
 import AnimalCard from "./components/animal_card";
-import Cat from "./data/cat";
+import Animal from "./data/animal";
 import catData from "./data/cat_data";
-import Dog from "./data/dog";
 import dogData from "./data/dog-data";
 
 function App() {
-  const [cats, setCats] = useState<Array<Cat>>(catData);
-  const [dogs, setDogs] = useState<Array<Dog>>(dogData);
+  const [cats, setCats] = useState<Array<Animal>>(catData);
+  const [dogs, setDogs] = useState<Array<Animal>>(dogData);
 
   const catCount = cats.length;
   const dogCount = dogs.length;
