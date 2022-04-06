@@ -3,4 +3,5 @@ export default interface Cat {
   species: string;
   favFoods: Array<string>; // or string[]
   birthYear: number;
+  id?: string;
 }

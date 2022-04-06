@@ -118,23 +118,30 @@ interface CatCardProps {
   catIndex: number;
 }
 
-const CatCard: React.FC<CatCardProps> = (props) => (
+// const CatCard: React.FC<CatCardProps> = (props) => {
+const CatCard: React.FC<CatCardProps> = ({
+  name,
+  species,
+  favFoods,
+  birthYear,
+  catIndex,
+}) => (
   <div className="card">
-    <h3 className="card__text card__header">{props.name}</h3>
-    <p className="card__text">Species: {props.species}</p>
-    <p className="card__text">Favourite Food(s): {props.favFoods}</p>
-    <p className="card__text">Birth Year: {props.birthYear}</p>
+    <h3 className="card__text card__header">{name}</h3>
+    <p className="card__text">Species: {species}</p>
+    <p className="card__text">Favourite Food(s): {favFoods}</p>
+    <p className="card__text">Birth Year: {birthYear}</p>
 
     {
       // only render an image if there's a corresponding entry in our images array
-      props.catIndex < images.length && (
+      catIndex < images.length && (
         <CatImage
-          image={images[props.catIndex].image}
-          altText={images[props.catIndex].altText}
-          licenceType={images[props.catIndex].licenceType}
-          licenceUrl={images[props.catIndex].licenceUrl}
-          attributionName={images[props.catIndex].attributionName}
-          attributionUrl={images[props.catIndex].attributionUrl}
+          image={images[catIndex].image}
+          altText={images[catIndex].altText}
+          licenceType={images[catIndex].licenceType}
+          licenceUrl={images[catIndex].licenceUrl}
+          attributionName={images[catIndex].attributionName}
+          attributionUrl={images[catIndex].attributionUrl}
         />
       )
     }
