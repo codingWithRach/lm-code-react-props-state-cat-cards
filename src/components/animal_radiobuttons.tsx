@@ -1,3 +1,5 @@
+import Radiobutton from "./radiobutton";
+
 interface AnimalRadiobuttonProps {
   selectedAnimalType: string;
   values: Array<string>;
@@ -14,26 +16,13 @@ const AnimalRadiobuttons: React.FC<AnimalRadiobuttonProps> = ({
   <>
     {values.map((value, index) => (
       <>
-        {value.toLowerCase() === selectedAnimalType.toLowerCase() && (
-          <input
-            onChange={(event) => onChangeHandler(event)}
-            type="radio"
-            name="animal"
-            value={value}
-            id={value}
-            checked
-          />
-        )}
-        {value.toLowerCase() !== selectedAnimalType.toLowerCase() && (
-          <input
-            onChange={(event) => onChangeHandler(event)}
-            type="radio"
-            name="animal"
-            value={value}
-            id={value}
-          />
-        )}
-        <label htmlFor={value}>{labels[index]}</label>
+        <Radiobutton
+          name="animal"
+          value={value}
+          label={labels[index]}
+          checked={value.toLowerCase() === selectedAnimalType.toLowerCase()}
+          onChangeHandler={onChangeHandler}
+        />
       </>
     ))}
     <br />
