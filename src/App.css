@@ -109,13 +109,12 @@ body {
   min-width: 11.25em;
   border-radius: 7px;
   background: var(--yellow);
-  margin-bottom: 1em;
   box-shadow: 0 4px 8px 0 rgb(13, 59, 102, 0.4);
   transition: 0.3s;
-  margin: 0.5em;
   color: var(--navy);
   font-family: "SleepyCat";
   font-size: 1.7rem;
+  margin: 1em auto 1em auto;
 }
 
 .form--cat {
