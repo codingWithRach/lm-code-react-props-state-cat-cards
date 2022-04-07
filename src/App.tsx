@@ -30,6 +30,7 @@ function App() {
 
   const addAnimal = (event: React.MouseEvent<HTMLButtonElement>) => {
     const animal: Animal = {
+      animalType: selectedAnimalType,
       name: animalName,
       species: animalSpecies,
       favFoods: animalFavFoods.split(", "),
@@ -65,6 +66,7 @@ function App() {
         <div className="cards__wrapper">
           {[...cats, ...dogs].map((animal, index) => (
             <AnimalCard
+              animalType={animal.animalType}
               key={animal.id}
               name={animal.name}
               species={animal.species}
@@ -75,7 +77,7 @@ function App() {
           ))}
         </div>
         <form>
-          <div className="form">
+          <div className={`form form--${selectedAnimalType.toLowerCase()}`}>
             <h2 className="header__title">Enter details of another animal:</h2>
             <AnimalRadiobuttons
               selectedAnimalType={selectedAnimalType}
