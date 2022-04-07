@@ -7,13 +7,39 @@ import AnimalCard from "./components/animal_card";
 import Animal from "./data/animal";
 import catData from "./data/cat_data";
 import dogData from "./data/dog-data";
+import InputText from "./components/input_text";
+import InputNumber from "./components/input_number";
+import Button from "./components/button";
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const [cats, setCats] = useState<Array<Animal>>(catData);
   const [dogs, setDogs] = useState<Array<Animal>>(dogData);
+  const [animalName, setAnimalName] = useState<string>("");
+  const [animalSpecies, setAnimalSpecies] = useState<string>("");
+  const [animalFavFoods, setAnimalFavFoods] = useState<string>("");
+  const [animalBirthYear, setAnimalBirthYear] = useState<number>(2022);
 
-  const catCount = cats.length;
+  let catCount = cats.length;
   const dogCount = dogs.length;
+
+  const addCat = (event: SubmitEvent) => {
+    const cat: Animal = {
+      name: animalName,
+      species: animalSpecies,
+      favFoods: animalFavFoods.split(", "),
+      birthYear: animalBirthYear,
+      id: uuidv4(),
+    };
+    event.preventDefault();
+    setCats([...cats, cat]);
+    catCount = cats.length;
+
+    setAnimalName("");
+    setAnimalSpecies("");
+    setAnimalFavFoods("");
+    setAnimalBirthYear(2022);
+  };
 
   return (
     <>
@@ -33,6 +59,47 @@ function App() {
             />
           ))}
         </div>
+        <form>
+          <div className="form">
+            <h2 className="header__title">Enter details of another cat:</h2>
+            <InputText
+              value={animalName}
+              onChange={setAnimalName}
+              placeholder="Name..."
+              labelText="Please enter the name of the animal"
+              idText="name"
+            />
+            <br />
+            <InputText
+              value={animalSpecies}
+              onChange={setAnimalSpecies}
+              placeholder="Species..."
+              labelText="Please enter the animal species"
+              idText="species"
+            />
+            <br />
+            <InputText
+              value={animalFavFoods}
+              onChange={setAnimalFavFoods}
+              placeholder="Favourite foods..."
+              labelText="Please enter a comma separated list of the animal's favourite foods"
+              idText="fav_foods"
+            />
+            <br />
+            <InputNumber
+              value={animalBirthYear}
+              onChange={setAnimalBirthYear}
+              min="1990"
+              max="2099"
+              placeholder="Birth year..."
+              labelText="Please enter the animal's year of birth"
+              idText="birth_year"
+            />
+            <br />
+            <Button label="Submit" clickFunction={addCat} />
+            <br />
+          </div>
+        </form>
       </main>
 
       <Footer />
