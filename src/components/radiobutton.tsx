@@ -18,6 +18,7 @@ const Radiobutton: React.FC<RadiobuttonProps> = ({
   <>
     {checked && (
       <input
+        className=".form__radiobutton"
         onChange={(event) => onChangeHandler(event)}
         type="radio"
         name={name}
@@ -28,6 +29,7 @@ const Radiobutton: React.FC<RadiobuttonProps> = ({
     )}
     {!checked && (
       <input
+        className=".form__radiobutton"
         onChange={(event) => onChangeHandler(event)}
         type="radio"
         name={name}

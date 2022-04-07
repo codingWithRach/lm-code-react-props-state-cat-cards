@@ -121,6 +121,12 @@ body {
   font-size: 1.7rem;
 }
 
+.form__radiobutton {
+  color: var(--navy);
+  font-family: "SleepyCat";
+  font-size: 1.7rem;
+}
+
 .links {
   color: var(--yellow);
   font-family: "Cattino";
