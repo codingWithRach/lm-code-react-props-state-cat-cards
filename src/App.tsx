@@ -66,7 +66,7 @@ function App() {
               value={animalName}
               onChange={setAnimalName}
               placeholder="Name..."
-              labelText="Please enter the name of the animal"
+              labelText="Please enter the name of the cat"
               idText="name"
             />
             <br />
@@ -74,7 +74,7 @@ function App() {
               value={animalSpecies}
               onChange={setAnimalSpecies}
               placeholder="Species..."
-              labelText="Please enter the animal species"
+              labelText="Please enter the cat species"
               idText="species"
             />
             <br />
@@ -82,7 +82,7 @@ function App() {
               value={animalFavFoods}
               onChange={setAnimalFavFoods}
               placeholder="Favourite foods..."
-              labelText="Please enter a comma separated list of the animal's favourite foods"
+              labelText="Please enter a comma separated list of the cat's favourite foods"
               idText="fav_foods"
             />
             <br />
@@ -92,7 +92,7 @@ function App() {
               min="1990"
               max="2099"
               placeholder="Birth year..."
-              labelText="Please enter the animal's year of birth"
+              labelText="Please enter the cat's year of birth"
               idText="birth_year"
             />
             <br />
