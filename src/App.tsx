@@ -2,7 +2,7 @@ import "./App.css";
 import Navbar from "./components/navbar";
 import Header from "./components/header";
 import Footer from "./components/footer";
-import { useState } from "react";
+import React, { useState } from "react";
 import AnimalCard from "./components/animal_card";
 import Animal from "./data/animal";
 import catData from "./data/cat_data";
@@ -24,7 +24,7 @@ function App() {
   let catCount = cats.length;
   const dogCount = dogs.length;
 
-  const addCat = (event: SubmitEvent) => {
+  const addCat = (event: React.MouseEvent<HTMLButtonElement>) => {
     const cat: Animal = {
       name: animalName,
       species: animalSpecies,

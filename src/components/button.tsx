@@ -1,6 +1,6 @@
 interface ButtonProps {
   label: string;
-  clickFunction: Function;
+  clickFunction: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const Button: React.FC<ButtonProps> = ({ label, clickFunction }) => (
