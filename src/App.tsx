@@ -13,12 +13,13 @@ import Button from "./components/button";
 import { v4 as uuidv4 } from "uuid";
 
 function App() {
+  const currentYear: number = new Date().getFullYear();
   const [cats, setCats] = useState<Array<Animal>>(catData);
   const [dogs, setDogs] = useState<Array<Animal>>(dogData);
   const [animalName, setAnimalName] = useState<string>("");
   const [animalSpecies, setAnimalSpecies] = useState<string>("");
   const [animalFavFoods, setAnimalFavFoods] = useState<string>("");
-  const [animalBirthYear, setAnimalBirthYear] = useState<number>(2022);
+  const [animalBirthYear, setAnimalBirthYear] = useState<number>(currentYear);
 
   let catCount = cats.length;
   const dogCount = dogs.length;
@@ -38,7 +39,7 @@ function App() {
     setAnimalName("");
     setAnimalSpecies("");
     setAnimalFavFoods("");
-    setAnimalBirthYear(2022);
+    setAnimalBirthYear(currentYear);
   };
 
   return (
@@ -90,7 +91,7 @@ function App() {
               value={animalBirthYear}
               onChange={setAnimalBirthYear}
               min="1990"
-              max="2099"
+              max={currentYear.toString()}
               placeholder="Birth year..."
               labelText="Please enter the cat's year of birth"
               idText="birth_year"
