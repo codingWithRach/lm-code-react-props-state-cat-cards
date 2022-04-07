@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import AnimalForm from "./animal_form";
-import AnimalCard from "./animal_card";
+import AnimalCards from "./animal_cards";
 
 import { AnimalType } from "../data/animal_type";
 import Animal from "../data/animal";
@@ -32,19 +32,7 @@ const AnimalMain: React.FC<AnimalMainProps> = ({
   return (
     <>
       <main>
-        <div className="cards__wrapper">
-          {[...cats, ...dogs].map((animal, index) => (
-            <AnimalCard
-              animalType={animal.animalType}
-              key={animal.id}
-              name={animal.name}
-              species={animal.species}
-              favFoods={animal.favFoods}
-              birthYear={animal.birthYear}
-              animalIndex={index}
-            />
-          ))}
-        </div>
+        <AnimalCards cats={cats} dogs={dogs} />
         <AnimalForm
           selectedAnimalType={selectedAnimalType}
           setSelectedAnimalType={setSelectedAnimalType}
