@@ -1,5 +1,3 @@
-import { AnimalType } from "../data/animal_type";
-
 interface RadiobuttonProps {
   name: string;
   value: string;
