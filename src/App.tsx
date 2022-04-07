@@ -4,6 +4,7 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import React, { useState } from "react";
 import AnimalCard from "./components/animal_card";
+import { AnimalType } from "./data/animal_type";
 import Animal from "./data/animal";
 import catData from "./data/cat_data";
 import dogData from "./data/dog-data";
@@ -17,7 +18,8 @@ function App() {
   const currentYear: number = new Date().getFullYear();
   const [cats, setCats] = useState<Array<Animal>>(catData);
   const [dogs, setDogs] = useState<Array<Animal>>(dogData);
-  const [selectedAnimalType, setSelectedAnimalType] = useState<string>("cat");
+  const [selectedAnimalType, setSelectedAnimalType] =
+    useState<AnimalType>("Cat");
   const [animalName, setAnimalName] = useState<string>("");
   const [animalSpecies, setAnimalSpecies] = useState<string>("");
   const [animalFavFoods, setAnimalFavFoods] = useState<string>("");
@@ -35,7 +37,7 @@ function App() {
       id: uuidv4(),
     };
     event.preventDefault();
-    if (selectedAnimalType === "cat") {
+    if (selectedAnimalType === "Cat") {
       setCats([...cats, animal]);
       catCount = cats.length;
     } else {
@@ -51,7 +53,7 @@ function App() {
 
   const changeAnimal = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
-    setSelectedAnimalType(event.target.value);
+    setSelectedAnimalType(event.target.value as AnimalType);
   };
 
   return (
@@ -77,15 +79,14 @@ function App() {
             <h2 className="header__title">Enter details of another animal:</h2>
             <AnimalRadiobuttons
               selectedAnimalType={selectedAnimalType}
-              values={["cat", "dog"]}
-              labels={["Cat", "Dog"]}
+              values={["Cat", "Dog"]}
               onChangeHandler={changeAnimal}
             />
             <InputText
               value={animalName}
               onChange={setAnimalName}
               placeholder="Name..."
-              labelText={`Please enter the name of the ${selectedAnimalType}`}
+              labelText={`Please enter the name of the ${selectedAnimalType.toLowerCase()}`}
               idText="name"
             />
             <br />
@@ -93,7 +94,7 @@ function App() {
               value={animalSpecies}
               onChange={setAnimalSpecies}
               placeholder="Species..."
-              labelText={`Please enter the ${selectedAnimalType} species`}
+              labelText={`Please enter the ${selectedAnimalType.toLowerCase()} species`}
               idText="species"
             />
             <br />
@@ -101,7 +102,7 @@ function App() {
               value={animalFavFoods}
               onChange={setAnimalFavFoods}
               placeholder="Favourite foods..."
-              labelText={`Please enter a comma separated list of the ${selectedAnimalType}'s favourite foods`}
+              labelText={`Please enter a comma separated list of the ${selectedAnimalType.toLowerCase()}'s favourite foods`}
               idText="fav_foods"
             />
             <br />
@@ -111,7 +112,7 @@ function App() {
               min="1990"
               max={currentYear.toString()}
               placeholder="Birth year..."
-              labelText={`Please enter the ${selectedAnimalType}'s year of birth`}
+              labelText={`Please enter the ${selectedAnimalType.toLowerCase()}'s year of birth`}
               idText="birth_year"
             />
             <br />

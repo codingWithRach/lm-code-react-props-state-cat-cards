@@ -1,3 +1,5 @@
+import { AnimalType } from "../data/animal_type";
+
 interface RadiobuttonProps {
   name: string;
   value: string;
@@ -28,7 +30,7 @@ const Radiobutton: React.FC<RadiobuttonProps> = ({
       <input
         onChange={(event) => onChangeHandler(event)}
         type="radio"
-        name="animal"
+        name={name}
         value={value}
         id={value}
       />
