@@ -41,6 +41,8 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
     setSelectedAnimalType(event.target.value as AnimalType);
   };
 
+  const animalType = selectedAnimalType.toLowerCase();
+
   const addAnimal = (event: React.MouseEvent<HTMLButtonElement>) => {
     const animal: Animal = {
       animalType: selectedAnimalType,
@@ -67,7 +69,7 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
 
   return (
     <form>
-      <div className={`form form--${selectedAnimalType.toLowerCase()}`}>
+      <div className={`form form--${animalType}`}>
         <h2 className="header__title">Enter details of another animal:</h2>
         <AnimalRadiobuttons
           selectedAnimalType={selectedAnimalType}
@@ -78,7 +80,7 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
           value={animalName}
           onChange={setAnimalName}
           placeholder="Name..."
-          labelText={`Please enter the name of the ${selectedAnimalType.toLowerCase()}`}
+          labelText={`Please enter the name of the ${animalType}`}
           idText="name"
         />
         <br />
@@ -86,7 +88,7 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
           value={animalSpecies}
           onChange={setAnimalSpecies}
           placeholder="Species..."
-          labelText={`Please enter the ${selectedAnimalType.toLowerCase()} species`}
+          labelText={`Please enter the ${animalType} species`}
           idText="species"
         />
         <br />
@@ -94,7 +96,7 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
           value={animalFavFoods}
           onChange={setAnimalFavFoods}
           placeholder="Favourite foods..."
-          labelText={`Please enter a comma separated list of the ${selectedAnimalType.toLowerCase()}'s favourite foods`}
+          labelText={`Please enter a comma separated list of the ${animalType}'s favourite foods`}
           idText="fav_foods"
         />
         <br />
@@ -104,7 +106,7 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
           min="1990"
           max={currentYear.toString()}
           placeholder="Birth year..."
-          labelText={`Please enter the ${selectedAnimalType.toLowerCase()}'s year of birth`}
+          labelText={`Please enter the ${animalType}'s year of birth`}
           idText="birth_year"
         />
         <br />
