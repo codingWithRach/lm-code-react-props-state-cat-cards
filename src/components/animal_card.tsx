@@ -19,7 +19,7 @@ const Card: React.FC<AnimalCardProps> = ({
   birthYear,
   animalIndex,
 }) => {
-  const className = animalType === "Cat" ? "card card--cat" : "card card--dog";
+  const className = `card card--${animalType.toLowerCase()}`;
   return (
     <div className={className}>
       <h3 className="card__text card__header">{name}</h3>
