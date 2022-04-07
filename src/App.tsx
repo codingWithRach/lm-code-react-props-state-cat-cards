@@ -7,6 +7,7 @@ import AnimalCard from "./components/animal_card";
 import Animal from "./data/animal";
 import catData from "./data/cat_data";
 import dogData from "./data/dog-data";
+import AnimalRadiobuttons from "./components/animal_radiobuttons";
 import InputText from "./components/input_text";
 import InputNumber from "./components/input_number";
 import Button from "./components/button";
@@ -16,16 +17,17 @@ function App() {
   const currentYear: number = new Date().getFullYear();
   const [cats, setCats] = useState<Array<Animal>>(catData);
   const [dogs, setDogs] = useState<Array<Animal>>(dogData);
+  const [selectedAnimalType, setSelectedAnimalType] = useState<string>("cat");
   const [animalName, setAnimalName] = useState<string>("");
   const [animalSpecies, setAnimalSpecies] = useState<string>("");
   const [animalFavFoods, setAnimalFavFoods] = useState<string>("");
   const [animalBirthYear, setAnimalBirthYear] = useState<number>(currentYear);
 
   let catCount = cats.length;
-  const dogCount = dogs.length;
+  let dogCount = dogs.length;
 
-  const addCat = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const cat: Animal = {
+  const addAnimal = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const animal: Animal = {
       name: animalName,
       species: animalSpecies,
       favFoods: animalFavFoods.split(", "),
@@ -33,13 +35,23 @@ function App() {
       id: uuidv4(),
     };
     event.preventDefault();
-    setCats([...cats, cat]);
-    catCount = cats.length;
+    if (selectedAnimalType === "cat") {
+      setCats([...cats, animal]);
+      catCount = cats.length;
+    } else {
+      setDogs([...dogs, animal]);
+      dogCount = dogs.length;
+    }
 
     setAnimalName("");
     setAnimalSpecies("");
     setAnimalFavFoods("");
     setAnimalBirthYear(currentYear);
+  };
+
+  const changeAnimal = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    setSelectedAnimalType(event.target.value);
   };
 
   return (
@@ -62,12 +74,18 @@ function App() {
         </div>
         <form>
           <div className="form">
-            <h2 className="header__title">Enter details of another cat:</h2>
+            <h2 className="header__title">Enter details of another animal:</h2>
+            <AnimalRadiobuttons
+              selectedAnimalType={selectedAnimalType}
+              values={["cat", "dog"]}
+              labels={["Cat", "Dog"]}
+              onChangeHandler={changeAnimal}
+            />
             <InputText
               value={animalName}
               onChange={setAnimalName}
               placeholder="Name..."
-              labelText="Please enter the name of the cat"
+              labelText={`Please enter the name of the ${selectedAnimalType}`}
               idText="name"
             />
             <br />
@@ -75,7 +93,7 @@ function App() {
               value={animalSpecies}
               onChange={setAnimalSpecies}
               placeholder="Species..."
-              labelText="Please enter the cat species"
+              labelText={`Please enter the ${selectedAnimalType} species`}
               idText="species"
             />
             <br />
@@ -83,7 +101,7 @@ function App() {
               value={animalFavFoods}
               onChange={setAnimalFavFoods}
               placeholder="Favourite foods..."
-              labelText="Please enter a comma separated list of the cat's favourite foods"
+              labelText={`Please enter a comma separated list of the ${selectedAnimalType}'s favourite foods`}
               idText="fav_foods"
             />
             <br />
@@ -93,11 +111,11 @@ function App() {
               min="1990"
               max={currentYear.toString()}
               placeholder="Birth year..."
-              labelText="Please enter the cat's year of birth"
+              labelText={`Please enter the ${selectedAnimalType}'s year of birth`}
               idText="birth_year"
             />
             <br />
-            <Button label="Submit" clickFunction={addCat} />
+            <Button label="Submit" clickFunction={addAnimal} />
             <br />
           </div>
         </form>

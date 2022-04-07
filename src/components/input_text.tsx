@@ -1,3 +1,4 @@
+import Label from "./label";
 interface InputTextProps {
   value: string;
   onChange: Function;
@@ -14,7 +15,7 @@ const InputText: React.FC<InputTextProps> = ({
   idText,
 }) => (
   <>
-    <label htmlFor={placeholder}>{labelText}</label>
+    <Label placeholder={placeholder} labelText={labelText} />
     <br />
     <input
       className="form__input"
