@@ -4,7 +4,9 @@ interface LabelProps {
 }
 
 const Label: React.FC<LabelProps> = ({ placeholder, labelText }) => (
-  <label htmlFor={placeholder}>{labelText}</label>
+  <label className="form__text" htmlFor={placeholder}>
+    {labelText}
+  </label>
 );
 
 export default Label;
