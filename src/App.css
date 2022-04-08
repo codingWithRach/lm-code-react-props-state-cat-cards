@@ -169,7 +169,7 @@ body {
 }
 
 .ul__navbar {
-  width: 100%;
+  width: 100vw;
 }
 
 .footer {
@@ -189,5 +189,8 @@ body {
 @media only screen and (max-width: 405px) {
   .header__title {
     padding-left: 1.5rem;
+  }
+  .header__welcome {
+    font-size: 2rem;
   }
 }
