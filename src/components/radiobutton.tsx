@@ -1,3 +1,4 @@
+import Label from "./label";
 interface RadiobuttonProps {
   name: string;
   value: string;
@@ -16,7 +17,7 @@ const Radiobutton: React.FC<RadiobuttonProps> = ({
   <>
     {checked && (
       <input
-        className=".form__radiobutton"
+        className="form__radiobutton"
         onChange={(event) => onChangeHandler(event)}
         type="radio"
         name={name}
@@ -27,7 +28,7 @@ const Radiobutton: React.FC<RadiobuttonProps> = ({
     )}
     {!checked && (
       <input
-        className=".form__radiobutton"
+        className="form__radiobutton"
         onChange={(event) => onChangeHandler(event)}
         type="radio"
         name={name}
@@ -35,7 +36,7 @@ const Radiobutton: React.FC<RadiobuttonProps> = ({
         id={value}
       />
     )}
-    <label htmlFor={value}>{label}</label>
+    <Label placeholder={value} labelText={label} />
   </>
 );
 
