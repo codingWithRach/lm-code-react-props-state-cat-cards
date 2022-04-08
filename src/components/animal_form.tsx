@@ -78,6 +78,7 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
           values={["Cat", "Dog"]}
           onChangeHandler={changeAnimalType}
         />
+        <br />
         <InputText
           value={animalName}
           onChange={setAnimalName}
@@ -111,6 +112,7 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
           labelText={`Please enter the ${animalType}'s year of birth`}
           idText="birth_year"
         />
+        <br />
         <br />
         <Button label="Submit" clickFunction={addAnimal} />
         <br />
