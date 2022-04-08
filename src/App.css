@@ -132,6 +132,18 @@ body {
   border-color: var(--blue);
 }
 
+.form__text {
+  color: var(--navy);
+  font-family: "SleepyCat";
+  font-size: 1.5rem;
+  margin: 0.2em;
+}
+
+.form__header {
+  font-size: 2rem;
+  margin: 0.2em;
+}
+
 .form__input {
   color: var(--navy);
   font-family: "SleepyCat";
