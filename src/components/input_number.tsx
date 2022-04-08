@@ -1,3 +1,4 @@
+import Label from "./label";
 interface InputNumberProps {
   value: number;
   onChange: Function;
@@ -18,7 +19,7 @@ const InputNumber: React.FC<InputNumberProps> = ({
   idText,
 }) => (
   <>
-    <label htmlFor={placeholder}>{labelText}</label>
+    <Label placeholder={placeholder} labelText={labelText} />
     <br />
     <input
       className="form__input"
