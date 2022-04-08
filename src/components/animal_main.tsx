@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import AnimalForm from "./animal_form";
 import AnimalCards from "./animal_cards";
