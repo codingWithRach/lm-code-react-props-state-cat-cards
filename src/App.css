@@ -112,7 +112,7 @@ body {
 .form {
   padding: 1.5em;
   border: 6px solid;
-  max-width: 40em;
+  max-width: 25em;
   min-width: 11.25em;
   border-radius: 7px;
   background: var(--yellow);
