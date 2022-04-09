@@ -1,0 +1,86 @@
+body {
+  background-color: var(--light);
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.header__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.header__title {
+  color: var(--navy);
+  font-family: "Cattino";
+}
+
+.header__welcome {
+  font-size: 3rem;
+  margin-bottom: 0;
+  margin-top: 0.25em;
+}
+
+.header__summary {
+  display: flex;
+  font-size: 1.5rem;
+  width: 80%;
+  justify-content: center;
+}
+
+.footer {
+  line-height: 2em;
+  margin-top: 0.5em;
+  padding: 1em 3em;
+}
+
+.footer__section {
+  min-width: 9.375em;
+}
+
+.icon {
+  max-width: 1.875em;
+}
+
+.links {
+  color: var(--yellow);
+  font-family: "Cattino";
+  font-size: 1.5em;
+  text-decoration: none;
+}
+
+.links:hover {
+  color: var(--red);
+}
+
+.nav__container {
+  background: var(--navy);
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  border-radius: 5px;
+  box-shadow: 0 3px 7px 0 rgb(13, 59, 102, 0.2);
+}
+
+.ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.ul__navbar {
+  width: 100vw;
+}
+
+@media only screen and (max-width: 405px) {
+  .header__title {
+    padding-left: 1.5rem;
+  }
+  .header__welcome {
+    font-size: 2rem;
+  }
+  .header__summary {
+    font-size: 1.25rem;
+  }
+}

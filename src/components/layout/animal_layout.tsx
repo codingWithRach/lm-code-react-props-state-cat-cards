@@ -4,6 +4,7 @@ import Navbar from "./navbar";
 import Header from "./header";
 import AnimalMain from "./animal_main";
 import Footer from "./footer";
+import "./layout.css";
 
 const AnimalLayout: React.FC = () => {
   const [catCount, setCatCount] = useState<number>(0);
