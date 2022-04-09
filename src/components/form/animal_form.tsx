@@ -6,8 +6,8 @@ import InputText from "./input_text";
 import InputNumber from "./input_number";
 import Button from "./button";
 
-import { AnimalType } from "../data/animal_type";
-import Animal from "../data/animal";
+import { AnimalType } from "../../data/animal_type";
+import Animal from "../../data/animal";
 
 interface AnimalFormProps {
   selectedAnimalType: AnimalType;

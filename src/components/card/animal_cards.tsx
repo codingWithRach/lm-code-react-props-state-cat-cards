@@ -1,5 +1,5 @@
 import AnimalCard from "./animal_card";
-import Animal from "../data/animal";
+import Animal from "../../data/animal";
 
 interface AnimalCardsProps {
   cats: Array<Animal>;

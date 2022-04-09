@@ -1,4 +1,4 @@
-import { AnimalType } from "../data/animal_type";
+import { AnimalType } from "../../data/animal_type";
 import Radiobutton from "./radiobutton";
 
 interface AnimalRadiobuttonProps {

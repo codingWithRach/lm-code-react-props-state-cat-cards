@@ -1,6 +1,6 @@
-import { AnimalType } from "../data/animal_type";
+import { AnimalType } from "../../data/animal_type";
 import AnimalImage from "./animal_image";
-import images from "../data/image_data";
+import images from "../../data/image_data";
 
 interface AnimalCardProps {
   animalType: AnimalType;

@@ -1,5 +1,5 @@
 import "./App.css";
-import AnimalLayout from "./components/animal_layout";
+import AnimalLayout from "./components/layout/animal_layout";
 
 function App() {
   return <AnimalLayout />;

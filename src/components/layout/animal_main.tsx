@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-import AnimalForm from "./animal_form";
-import AnimalCards from "./animal_cards";
+import AnimalForm from "../form/animal_form";
+import AnimalCards from "../card/animal_cards";
 
-import { AnimalType } from "../data/animal_type";
-import Animal from "../data/animal";
-import catData from "../data/cat_data";
-import dogData from "../data/dog-data";
+import { AnimalType } from "../../data/animal_type";
+import Animal from "../../data/animal";
+import catData from "../../data/cat_data";
+import dogData from "../../data/dog-data";
 
 interface AnimalMainProps {
   catCount: number;
