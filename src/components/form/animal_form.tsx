@@ -8,7 +8,7 @@ import Button from "./button";
 
 import { AnimalType } from "../../data/animal_type";
 import Animal from "../../data/animal";
-import "./animal_form.css";
+import "./form.css";
 
 interface AnimalFormProps {
   selectedAnimalType: AnimalType;
