@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import AnimalForm from "../form/animal_form";
 import AnimalCards from "../card/animal_cards";
@@ -26,8 +26,10 @@ const AnimalMain: React.FC<AnimalMainProps> = ({
   const [selectedAnimalType, setSelectedAnimalType] =
     useState<AnimalType>("Cat");
 
-  setCatCount(cats.length);
-  setDogCount(dogs.length);
+  useEffect(() => {
+    setCatCount(cats.length);
+    setDogCount(dogs.length);
+  });
 
   return (
     <>
