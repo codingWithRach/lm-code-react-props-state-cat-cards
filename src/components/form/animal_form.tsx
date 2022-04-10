@@ -37,11 +37,6 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
   const [animalFavFoods, setAnimalFavFoods] = useState<string>("");
   const [animalBirthYear, setAnimalBirthYear] = useState<number>(currentYear);
 
-  const changeAnimalType = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault();
-    setSelectedAnimalType(event.target.value as AnimalType);
-  };
-
   const animalType = selectedAnimalType.toLowerCase();
 
   const addAnimal = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -77,7 +72,9 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
         <AnimalRadiobuttons
           selectedAnimalType={selectedAnimalType}
           values={["Cat", "Dog"]}
-          onChangeHandler={changeAnimalType}
+          onChangeHandler={(event) =>
+            setSelectedAnimalType(event.target.value as AnimalType)
+          }
         />
         <br />
         <InputText
