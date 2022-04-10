@@ -14,7 +14,7 @@ const AnimalRadiobuttons: React.FC<AnimalRadiobuttonProps> = ({
 }) => (
   <>
     {values.map((value, index) => (
-      <div key={value}>
+      <>
         <Radiobutton
           name="animal"
           value={value}
@@ -22,7 +22,7 @@ const AnimalRadiobuttons: React.FC<AnimalRadiobuttonProps> = ({
           checked={value.toLowerCase() === selectedAnimalType.toLowerCase()}
           onChangeHandler={onChangeHandler}
         />
-      </div>
+      </>
     ))}
     <br />
   </>
