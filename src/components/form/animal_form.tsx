@@ -112,7 +112,7 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
         />
         <br />
         <br />
-        <Button label="Submit" clickFunction={addAnimal} />
+        <Button label="Submit" onClickHandler={addAnimal} />
         <br />
       </div>
     </form>

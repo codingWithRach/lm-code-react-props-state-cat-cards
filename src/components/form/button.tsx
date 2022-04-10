@@ -1,11 +1,11 @@
 interface ButtonProps {
   label: string;
-  clickFunction: React.MouseEventHandler<HTMLButtonElement>;
+  onClickHandler: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const Button: React.FC<ButtonProps> = ({ label, clickFunction }) => (
+const Button: React.FC<ButtonProps> = ({ label, onClickHandler }) => (
   <>
-    <button onClick={(event) => clickFunction(event)} className="form__button">
+    <button onClick={(event) => onClickHandler(event)} className="form__button">
       {label}
     </button>
   </>
