@@ -2,7 +2,7 @@ import Label from "./label";
 interface InputNumberProps {
   id: string;
   value: number;
-  onChangeHandler: Function;
+  onChangeHandler: React.ChangeEventHandler<HTMLInputElement>;
   min: string;
   max: string;
   placeholder: string;
@@ -25,8 +25,8 @@ const InputNumber: React.FC<InputNumberProps> = ({
       className="form__input"
       type="number"
       id={id}
-      value={value}
-      onChange={(event) => onChangeHandler(event.target.value)}
+      defaultValue={value}
+      onChange={onChangeHandler}
       min={min}
       max={max}
       placeholder={placeholder}

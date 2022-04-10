@@ -80,7 +80,7 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
         <InputText
           id="name"
           value={animalName}
-          onChangeHandler={setAnimalName}
+          onChangeHandler={(event) => setAnimalName(event.target.value)}
           placeholder="Name..."
           labelText={`Please enter the name of the ${animalType}`}
         />
@@ -88,7 +88,7 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
         <InputText
           id="species"
           value={animalSpecies}
-          onChangeHandler={setAnimalSpecies}
+          onChangeHandler={(event) => setAnimalSpecies(event.target.value)}
           placeholder="Species..."
           labelText={`Please enter the ${animalType} species`}
         />
@@ -96,7 +96,7 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
         <InputText
           id="favFoods"
           value={animalFavFoods}
-          onChangeHandler={setAnimalFavFoods}
+          onChangeHandler={(event) => setAnimalFavFoods(event.target.value)}
           placeholder="Favourite foods..."
           labelText={`Please enter a comma separated list of the ${animalType}'s favourite foods`}
         />
@@ -104,7 +104,9 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
         <InputNumber
           id="animalBirthYear"
           value={animalBirthYear}
-          onChangeHandler={setAnimalBirthYear}
+          onChangeHandler={(event) =>
+            setAnimalBirthYear(parseInt(event.target.value))
+          }
           min="1990"
           max={currentYear.toString()}
           placeholder="Birth year..."

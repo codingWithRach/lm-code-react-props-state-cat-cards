@@ -2,7 +2,7 @@ import Label from "./label";
 interface InputTextProps {
   id: string;
   value: string;
-  onChangeHandler: Function;
+  onChangeHandler: React.ChangeEventHandler<HTMLInputElement>;
   placeholder: string;
   labelText: string;
 }
@@ -22,7 +22,7 @@ const InputText: React.FC<InputTextProps> = ({
       type="text"
       id={id}
       value={value}
-      onChange={(event) => onChangeHandler(event.target.value)}
+      onChange={onChangeHandler}
       placeholder={placeholder}
     />
   </>
