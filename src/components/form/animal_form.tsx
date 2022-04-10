@@ -45,31 +45,22 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
 
   const changeAnimal = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    switch (name) {
-      case "favFoods":
-        setAnimal((values) => ({
-          ...values,
-          [name]: value.split(", "),
-          animalType: selectedAnimalType,
-        }));
-        break;
-      case "animalBirthYear":
-        setAnimal((values) => ({
-          ...values,
-          [name]: parseInt(value),
-          animalType: selectedAnimalType,
-        }));
-        break;
-      default:
-        setAnimal((values) => ({
-          ...values,
-          [name]: value,
-          animalType: selectedAnimalType,
-        }));
-        break;
+    if (name === "favFoods") {
+      setAnimal((values) => ({
+        ...values,
+        [name]: value.split(", "),
+        animalType: selectedAnimalType,
+      }));
+    } else {
+      setAnimal((values) => ({
+        ...values,
+        [name]: typeof name === "number" ? Number(value) : value,
+        animalType: selectedAnimalType,
+      }));
     }
   };
 
+  //[name]: typeof name === 'number' ? Number(value) : value,
   const addAnimal = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnimal((values) => ({ ...values, id: uuidv4() }));
     event.preventDefault();
