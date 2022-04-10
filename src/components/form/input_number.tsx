@@ -3,8 +3,8 @@ interface InputNumberProps {
   id: string;
   value: number;
   onChangeHandler: React.ChangeEventHandler<HTMLInputElement>;
-  min: string;
-  max: string;
+  min: number;
+  max: number;
   placeholder: string;
   labelText: string;
 }

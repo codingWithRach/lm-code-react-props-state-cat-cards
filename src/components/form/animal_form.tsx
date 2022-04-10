@@ -125,8 +125,8 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
           id="animalBirthYear"
           value={animal.birthYear}
           onChangeHandler={changeAnimal}
-          min="1990"
-          max={currentYear.toString()}
+          min={1990}
+          max={currentYear}
           placeholder="Birth year..."
           labelText={`Please enter the ${animalType}'s year of birth`}
         />
