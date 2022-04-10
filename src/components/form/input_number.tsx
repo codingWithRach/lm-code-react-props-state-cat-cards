@@ -24,6 +24,7 @@ const InputNumber: React.FC<InputNumberProps> = ({
     <input
       className="form__input"
       type="number"
+      name={id}
       id={id}
       value={value}
       onChange={onChangeHandler}

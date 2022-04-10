@@ -10,6 +10,15 @@ import { AnimalType } from "../../data/animal_type";
 import Animal from "../../data/animal";
 import "./form.css";
 
+const currentYear: number = new Date().getFullYear();
+const defaultAnimal: Animal = {
+  animalType: "Cat",
+  name: "",
+  species: "",
+  favFoods: [],
+  birthYear: currentYear,
+  id: "",
+};
 interface AnimalFormProps {
   selectedAnimalType: AnimalType;
   setSelectedAnimalType(animalType: AnimalType): void;
@@ -31,23 +40,38 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
   dogCount,
   setDogs,
 }) => {
-  const currentYear: number = new Date().getFullYear();
-  const [animalName, setAnimalName] = useState<string>("");
-  const [animalSpecies, setAnimalSpecies] = useState<string>("");
-  const [animalFavFoods, setAnimalFavFoods] = useState<string>("");
-  const [animalBirthYear, setAnimalBirthYear] = useState<number>(currentYear);
-
+  const [animal, setAnimal] = useState<Animal>(defaultAnimal);
   const animalType = selectedAnimalType.toLowerCase();
 
+  const changeAnimal = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    switch (name) {
+      case "favFoods":
+        setAnimal((values) => ({
+          ...values,
+          [name]: value.split(", "),
+          animalType: selectedAnimalType,
+        }));
+        break;
+      case "animalBirthYear":
+        setAnimal((values) => ({
+          ...values,
+          [name]: parseInt(value),
+          animalType: selectedAnimalType,
+        }));
+        break;
+      default:
+        setAnimal((values) => ({
+          ...values,
+          [name]: value,
+          animalType: selectedAnimalType,
+        }));
+        break;
+    }
+  };
+
   const addAnimal = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const animal: Animal = {
-      animalType: selectedAnimalType,
-      name: animalName,
-      species: animalSpecies,
-      favFoods: animalFavFoods.split(", "),
-      birthYear: animalBirthYear,
-      id: uuidv4(),
-    };
+    setAnimal((values) => ({ ...values, id: uuidv4() }));
     event.preventDefault();
     if (selectedAnimalType === "Cat") {
       setCats([...cats, animal]);
@@ -56,11 +80,7 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
       setDogs([...dogs, animal]);
       dogCount = dogs.length;
     }
-
-    setAnimalName("");
-    setAnimalSpecies("");
-    setAnimalFavFoods("");
-    setAnimalBirthYear(currentYear);
+    setAnimal(defaultAnimal);
   };
 
   return (
@@ -79,34 +99,32 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
         <br />
         <InputText
           id="name"
-          value={animalName}
-          onChangeHandler={(event) => setAnimalName(event.target.value)}
+          value={animal.name}
+          onChangeHandler={changeAnimal}
           placeholder="Name..."
           labelText={`Please enter the name of the ${animalType}`}
         />
         <br />
         <InputText
           id="species"
-          value={animalSpecies}
-          onChangeHandler={(event) => setAnimalSpecies(event.target.value)}
+          value={animal.species}
+          onChangeHandler={changeAnimal}
           placeholder="Species..."
           labelText={`Please enter the ${animalType} species`}
         />
         <br />
         <InputText
           id="favFoods"
-          value={animalFavFoods}
-          onChangeHandler={(event) => setAnimalFavFoods(event.target.value)}
+          value={animal.favFoods.join(", ")}
+          onChangeHandler={changeAnimal}
           placeholder="Favourite foods..."
           labelText={`Please enter a comma separated list of the ${animalType}'s favourite foods`}
         />
         <br />
         <InputNumber
           id="animalBirthYear"
-          value={animalBirthYear}
-          onChangeHandler={(event) =>
-            setAnimalBirthYear(parseInt(event.target.value))
-          }
+          value={animal.birthYear}
+          onChangeHandler={changeAnimal}
           min="1990"
           max={currentYear.toString()}
           placeholder="Birth year..."

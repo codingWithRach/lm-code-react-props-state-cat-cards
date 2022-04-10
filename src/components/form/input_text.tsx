@@ -20,6 +20,7 @@ const InputText: React.FC<InputTextProps> = ({
     <input
       className="form__input"
       type="text"
+      name={id}
       id={id}
       value={value}
       onChange={onChangeHandler}
