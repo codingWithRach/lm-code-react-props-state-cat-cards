@@ -1,7 +1,7 @@
 import Label from "./label";
 interface InputTextProps {
   value: string;
-  onChange: Function;
+  onChangeHandler: Function;
   placeholder: string;
   labelText: string;
   idText: string;
@@ -9,7 +9,7 @@ interface InputTextProps {
 
 const InputText: React.FC<InputTextProps> = ({
   value,
-  onChange,
+  onChangeHandler,
   placeholder,
   labelText,
   idText,
@@ -21,7 +21,7 @@ const InputText: React.FC<InputTextProps> = ({
       className="form__input"
       type="text"
       value={value}
-      onChange={(event) => onChange(event.target.value)}
+      onChange={(event) => onChangeHandler(event.target.value)}
       placeholder={placeholder}
       id={idText}
     />
