@@ -78,37 +78,37 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
         />
         <br />
         <InputText
+          id="name"
           value={animalName}
           onChangeHandler={setAnimalName}
           placeholder="Name..."
           labelText={`Please enter the name of the ${animalType}`}
-          idText="name"
         />
         <br />
         <InputText
+          id="species"
           value={animalSpecies}
           onChangeHandler={setAnimalSpecies}
           placeholder="Species..."
           labelText={`Please enter the ${animalType} species`}
-          idText="species"
         />
         <br />
         <InputText
+          id="favFoods"
           value={animalFavFoods}
           onChangeHandler={setAnimalFavFoods}
           placeholder="Favourite foods..."
           labelText={`Please enter a comma separated list of the ${animalType}'s favourite foods`}
-          idText="fav_foods"
         />
         <br />
         <InputNumber
+          id="animalBirthYear"
           value={animalBirthYear}
           onChangeHandler={setAnimalBirthYear}
           min="1990"
           max={currentYear.toString()}
           placeholder="Birth year..."
           labelText={`Please enter the ${animalType}'s year of birth`}
-          idText="birth_year"
         />
         <br />
         <br />

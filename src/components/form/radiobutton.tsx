@@ -36,7 +36,7 @@ const Radiobutton: React.FC<RadiobuttonProps> = ({
         id={value}
       />
     )}
-    <Label placeholder={value} labelText={label} />
+    <Label forID={value} labelText={label} />
   </>
 );
 
