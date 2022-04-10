@@ -11,8 +11,7 @@ const AnimalCards: React.FC<AnimalCardsProps> = ({ cats, dogs }) => {
   return (
     <div className="cards__wrapper">
       {[...cats, ...dogs].map((animal, index) => {
-        const animalWithIndex = { ...animal, animalIndex: index };
-        return <AnimalCard {...animalWithIndex} />;
+        return <AnimalCard {...{ ...animal, animalIndex: index }} />;
       })}
     </div>
   );
