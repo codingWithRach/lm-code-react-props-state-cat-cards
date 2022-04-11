@@ -62,11 +62,11 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
   };
 
   const addAnimal = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnimal((values) => ({
-      ...values,
+    const animalToAdd: Animal = {
+      ...animal,
+      birthYear: animalBirthYear,
       id: uuidv4(),
-    }));
-    const animalToAdd: Animal = { ...animal, birthYear: animalBirthYear };
+    };
     event.preventDefault();
     if (selectedAnimalType === "Cat") {
       setCats([...cats, animalToAdd]);
