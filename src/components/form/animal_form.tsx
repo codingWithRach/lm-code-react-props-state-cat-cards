@@ -41,6 +41,7 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
   setDogs,
 }) => {
   const [animal, setAnimal] = useState<Animal>(defaultAnimal);
+  const [animalBirthYear, setAnimalBirthYear] = useState<number>(currentYear);
   const animalType = selectedAnimalType.toLowerCase();
 
   const changeAnimal = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,24 +55,28 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
     } else {
       setAnimal((values) => ({
         ...values,
-        [name]: typeof name === "number" ? Number(value) : value,
+        [name]: value,
         animalType: selectedAnimalType,
       }));
     }
   };
 
-  //[name]: typeof name === 'number' ? Number(value) : value,
   const addAnimal = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnimal((values) => ({ ...values, id: uuidv4() }));
+    setAnimal((values) => ({
+      ...values,
+      id: uuidv4(),
+    }));
+    const animalToAdd: Animal = { ...animal, birthYear: animalBirthYear };
     event.preventDefault();
     if (selectedAnimalType === "Cat") {
-      setCats([...cats, animal]);
+      setCats([...cats, animalToAdd]);
       catCount = cats.length;
     } else {
-      setDogs([...dogs, animal]);
+      setDogs([...dogs, animalToAdd]);
       dogCount = dogs.length;
     }
     setAnimal(defaultAnimal);
+    setAnimalBirthYear(currentYear);
   };
 
   return (
@@ -114,8 +119,10 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
         <br />
         <InputNumber
           id="animalBirthYear"
-          value={animal.birthYear}
-          onChangeHandler={changeAnimal}
+          value={animalBirthYear}
+          onChangeHandler={(event) =>
+            setAnimalBirthYear(event.target.valueAsNumber)
+          }
           min={1990}
           max={currentYear}
           placeholder="Birth year..."
