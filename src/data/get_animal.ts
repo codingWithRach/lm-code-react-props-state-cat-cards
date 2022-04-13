@@ -1,7 +1,7 @@
-import Animal from "./data/animal";
-import { AnimalType } from "./data/animal_type";
+import Animal from "./animal";
+import { AnimalType } from "./animal_type";
 
-export function getNewAnimal(
+export function getAnimal(
   name: string,
   value: string,
   animalType: AnimalType,

@@ -8,7 +8,7 @@ import Button from "./button";
 
 import { AnimalType } from "../../data/animal_type";
 import Animal from "../../data/animal";
-import { getNewAnimal } from "../../process_animal";
+import { getAnimal } from "../../data/get_animal";
 import "./form.css";
 
 const currentYear: number = new Date().getFullYear();
@@ -47,7 +47,7 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
 
   const changeAnimal = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    setAnimal(getNewAnimal(name, value, selectedAnimalType, animal));
+    setAnimal(getAnimal(name, value, selectedAnimalType, animal));
   };
 
   const addAnimal = (event: React.MouseEvent<HTMLButtonElement>) => {
