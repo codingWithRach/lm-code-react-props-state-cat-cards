@@ -8,7 +8,7 @@ interface AnimalCardProps {
   species: string;
   favFoods: Array<string>;
   birthYear: number;
-  animalIndex: number;
+  imageIndex: number;
 }
 
 const Card: React.FC<AnimalCardProps> = ({
@@ -17,7 +17,7 @@ const Card: React.FC<AnimalCardProps> = ({
   species,
   favFoods,
   birthYear,
-  animalIndex,
+  imageIndex,
 }) => {
   const className = `card card--${animalType.toLowerCase()}`;
   return (
@@ -27,7 +27,7 @@ const Card: React.FC<AnimalCardProps> = ({
       <p className="card__text">Favourite Food(s): {favFoods.join(", ")}</p>
       <p className="card__text">Birth Year: {birthYear}</p>
 
-      {animalIndex < images.length && <AnimalImage {...images[animalIndex]} />}
+      {imageIndex < images.length && <AnimalImage {...images[imageIndex]} />}
     </div>
   );
 };
