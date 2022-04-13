@@ -21,3 +21,14 @@ export function getAnimal(
     };
   }
 }
+
+export function getDefaultAnimal(): Animal {
+  return {
+    animalType: "Cat",
+    name: "",
+    species: "",
+    favFoods: [],
+    birthYear: new Date().getFullYear(),
+    id: "",
+  };
+}

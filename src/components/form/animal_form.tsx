@@ -8,18 +8,9 @@ import Button from "./button";
 
 import { AnimalType } from "../../data/animal_type";
 import Animal from "../../data/animal";
-import { getAnimal } from "../../data/get_animal";
+import { getAnimal, getDefaultAnimal } from "../../data/get_animal";
 import "./form.css";
 
-const currentYear: number = new Date().getFullYear();
-const defaultAnimal: Animal = {
-  animalType: "Cat",
-  name: "",
-  species: "",
-  favFoods: [],
-  birthYear: currentYear,
-  id: "",
-};
 interface AnimalFormProps {
   selectedAnimalType: AnimalType;
   setSelectedAnimalType(animalType: AnimalType): void;
@@ -41,8 +32,11 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
   dogCount,
   setDogs,
 }) => {
+  const defaultAnimal: Animal = getDefaultAnimal();
   const [animal, setAnimal] = useState<Animal>(defaultAnimal);
-  const [animalBirthYear, setAnimalBirthYear] = useState<number>(currentYear);
+  const [animalBirthYear, setAnimalBirthYear] = useState<number>(
+    defaultAnimal.birthYear
+  );
   const animalType = selectedAnimalType.toLowerCase();
 
   const changeAnimal = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -65,7 +59,7 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
       dogCount = dogs.length;
     }
     setAnimal(defaultAnimal);
-    setAnimalBirthYear(currentYear);
+    setAnimalBirthYear(defaultAnimal.birthYear);
   };
 
   return (
@@ -113,7 +107,7 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
             setAnimalBirthYear(event.target.valueAsNumber)
           }
           min={1990}
-          max={currentYear}
+          max={defaultAnimal.birthYear}
           placeholder="Birth year..."
           labelText={`Please enter the ${animalType}'s year of birth`}
         />
