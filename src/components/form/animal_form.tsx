@@ -12,8 +12,6 @@ import { getAnimal, getDefaultAnimal } from "../../data/get_animal";
 import "./form.css";
 
 interface AnimalFormProps {
-  selectedAnimalType: AnimalType;
-  setSelectedAnimalType(animalType: AnimalType): void;
   cats: Array<Animal>;
   catCount: number;
   setCats(cats: Array<Animal>): void;
@@ -23,8 +21,6 @@ interface AnimalFormProps {
 }
 
 const AnimalForm: React.FC<AnimalFormProps> = ({
-  selectedAnimalType,
-  setSelectedAnimalType,
   cats,
   catCount,
   setCats,
@@ -33,6 +29,9 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
   setDogs,
 }) => {
   const defaultAnimal: Animal = getDefaultAnimal();
+  const [selectedAnimalType, setSelectedAnimalType] = useState<AnimalType>(
+    defaultAnimal.animalType
+  );
   const [animal, setAnimal] = useState<Animal>(defaultAnimal);
   const [animalBirthYear, setAnimalBirthYear] = useState<number>(
     defaultAnimal.birthYear
@@ -60,6 +59,7 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
     }
     setAnimal(defaultAnimal);
     setAnimalBirthYear(defaultAnimal.birthYear);
+    setSelectedAnimalType(defaultAnimal.animalType);
   };
 
   return (

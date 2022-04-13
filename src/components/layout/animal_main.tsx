@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import AnimalForm from "../form/animal_form";
 import AnimalCards from "../card/animal_cards";
 
-import { AnimalType } from "../../data/animal_type";
 import Animal from "../../data/animal";
 import catData from "../../data/cat_data";
 import dogData from "../../data/dog-data";
@@ -23,8 +22,6 @@ const AnimalMain: React.FC<AnimalMainProps> = ({
 }) => {
   const [cats, setCats] = useState<Array<Animal>>(catData);
   const [dogs, setDogs] = useState<Array<Animal>>(dogData);
-  const [selectedAnimalType, setSelectedAnimalType] =
-    useState<AnimalType>("Cat");
 
   useEffect(() => {
     setCatCount(cats.length);
@@ -36,8 +33,6 @@ const AnimalMain: React.FC<AnimalMainProps> = ({
       <main>
         <AnimalCards cats={cats} dogs={dogs} />
         <AnimalForm
-          selectedAnimalType={selectedAnimalType}
-          setSelectedAnimalType={setSelectedAnimalType}
           cats={cats}
           catCount={catCount}
           setCats={setCats}
