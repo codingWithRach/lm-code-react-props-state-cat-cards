@@ -43,6 +43,12 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
     setAnimal(getAnimal(name, value, selectedAnimalType, animal));
   };
 
+  const resetAnimal = () => {
+    setAnimal(defaultAnimal);
+    setAnimalBirthYear(defaultAnimal.birthYear);
+    setSelectedAnimalType(defaultAnimal.animalType);
+  };
+
   const addAnimal = (event: React.MouseEvent<HTMLButtonElement>) => {
     const animalToAdd: Animal = {
       ...animal,
@@ -57,9 +63,7 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
       setDogs([...dogs, animalToAdd]);
       dogCount = dogs.length;
     }
-    setAnimal(defaultAnimal);
-    setAnimalBirthYear(defaultAnimal.birthYear);
-    setSelectedAnimalType(defaultAnimal.animalType);
+    resetAnimal();
   };
 
   return (
