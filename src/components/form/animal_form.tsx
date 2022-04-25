@@ -72,53 +72,58 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
         <h2 className="form__text form__header">
           Enter details of another animal:
         </h2>
-        <AnimalRadiobuttons
-          selectedAnimalType={selectedAnimalType}
-          values={["Cat", "Dog"]}
-          onChangeHandler={(event) =>
-            setSelectedAnimalType(event.target.value as AnimalType)
-          }
-        />
-        <br />
-        <InputText
-          id="name"
-          value={animal.name}
-          onChangeHandler={changeAnimal}
-          placeholder="Name..."
-          labelText={`Please enter the name of the ${animalType}`}
-        />
-        <br />
-        <InputText
-          id="species"
-          value={animal.species}
-          onChangeHandler={changeAnimal}
-          placeholder="Species..."
-          labelText={`Please enter the ${animalType} species`}
-        />
-        <br />
-        <InputText
-          id="favFoods"
-          value={animal.favFoods.join(", ")}
-          onChangeHandler={changeAnimal}
-          placeholder="Favourite foods..."
-          labelText={`Please enter a comma separated list of the ${animalType}'s favourite foods`}
-        />
-        <br />
-        <InputNumber
-          id="animalBirthYear"
-          value={animalBirthYear}
-          onChangeHandler={(event) =>
-            setAnimalBirthYear(event.target.valueAsNumber)
-          }
-          min={1990}
-          max={defaultAnimal.birthYear}
-          placeholder="Birth year..."
-          labelText={`Please enter the ${animalType}'s year of birth`}
-        />
-        <br />
-        <br />
-        <Button label="Submit" onClickHandler={addAnimal} />
-        <br />
+        <div>
+          <AnimalRadiobuttons
+            selectedAnimalType={selectedAnimalType}
+            values={["Cat", "Dog"]}
+            onChangeHandler={(event) =>
+              setSelectedAnimalType(event.target.value as AnimalType)
+            }
+          />
+        </div>
+        <div>
+          <InputText
+            id="name"
+            value={animal.name}
+            onChangeHandler={changeAnimal}
+            placeholder="Name..."
+            labelText={`Please enter the name of the ${animalType}`}
+          />
+        </div>
+        <div>
+          <InputText
+            id="species"
+            value={animal.species}
+            onChangeHandler={changeAnimal}
+            placeholder="Species..."
+            labelText={`Please enter the ${animalType} species`}
+          />
+        </div>
+        <div>
+          <InputText
+            id="favFoods"
+            value={animal.favFoods.join(", ")}
+            onChangeHandler={changeAnimal}
+            placeholder="Favourite foods..."
+            labelText={`Please enter a comma separated list of the ${animalType}'s favourite foods`}
+          />
+        </div>
+        <div>
+          <InputNumber
+            id="animalBirthYear"
+            value={animalBirthYear}
+            onChangeHandler={(event) =>
+              setAnimalBirthYear(event.target.valueAsNumber)
+            }
+            min={1990}
+            max={defaultAnimal.birthYear}
+            placeholder="Birth year..."
+            labelText={`Please enter the ${animalType}'s year of birth`}
+          />
+        </div>
+        <div>
+          <Button label="Submit" onClickHandler={addAnimal} />
+        </div>
       </div>
     </form>
   );

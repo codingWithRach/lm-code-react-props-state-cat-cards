@@ -16,7 +16,6 @@ const InputText: React.FC<InputTextProps> = ({
 }) => (
   <>
     <Label forID={id} labelText={labelText} />
-    <br />
     <input
       className="form__input"
       type="text"

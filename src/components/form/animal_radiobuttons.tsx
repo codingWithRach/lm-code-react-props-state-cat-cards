@@ -24,7 +24,6 @@ const AnimalRadiobuttons: React.FC<AnimalRadiobuttonProps> = ({
         />
       </div>
     ))}
-    <br />
   </>
 );
 
