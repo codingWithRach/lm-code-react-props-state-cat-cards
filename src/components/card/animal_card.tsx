@@ -19,9 +19,9 @@ const Card: React.FC<AnimalCardProps> = ({
   birthYear,
   imageIndex,
 }) => {
-  const className = `card card--${animalType.toLowerCase()}`;
+  const cardStyle = `card card--${animalType.toLowerCase()}`;
   return (
-    <div className={className}>
+    <div className={cardStyle}>
       <h3 className="card__text card__header">{name}</h3>
       <p className="card__text">Species: {species}</p>
       <p className="card__text">Favourite Food(s): {favFoods.join(", ")}</p>
