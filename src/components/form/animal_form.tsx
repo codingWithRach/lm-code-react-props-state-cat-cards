@@ -72,7 +72,7 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
         <h2 className="form__text form__header">
           Enter details of another animal:
         </h2>
-        <div>
+        <div className="form__radiobuttongroup">
           <AnimalRadiobuttons
             selectedAnimalType={selectedAnimalType}
             values={["Cat", "Dog"]}
