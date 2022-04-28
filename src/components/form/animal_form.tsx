@@ -10,6 +10,13 @@ import { AnimalType } from "../../data/animal_type";
 import Animal from "../../data/animal";
 import { getAnimal, getDefaultAnimal } from "../../data/get_animal";
 import "./form.css";
+import { validForm } from "./validation";
+import {
+  IErrorMessageContext,
+  useErrorMessage,
+  useErrorMessageUpdate,
+} from "../../context_providers/ErrorMessageContext";
+import ErrorMessage from "../layout/error_message";
 
 interface AnimalFormProps {
   cats: Array<Animal>;
@@ -37,6 +44,8 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
     defaultAnimal.birthYear
   );
   const animalType = selectedAnimalType.toLowerCase();
+  const errorMessages: IErrorMessageContext = useErrorMessage();
+  const updateErrorMessages = useErrorMessageUpdate();
 
   const changeAnimal = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -56,14 +65,16 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
       id: uuidv4(),
     };
     event.preventDefault();
-    if (selectedAnimalType === "Cat") {
-      setCats([...cats, animalToAdd]);
-      catCount = cats.length;
-    } else {
-      setDogs([...dogs, animalToAdd]);
-      dogCount = dogs.length;
+    if (validForm(animalToAdd, updateErrorMessages)) {
+      if (selectedAnimalType === "Cat") {
+        setCats([...cats, animalToAdd]);
+        catCount = cats.length;
+      } else {
+        setDogs([...dogs, animalToAdd]);
+        dogCount = dogs.length;
+      }
+      resetAnimal();
     }
-    resetAnimal();
   };
 
   return (
@@ -90,6 +101,12 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
             labelText={`Please enter the name of the ${animalType}`}
           />
         </div>
+        {errorMessages.nameError.length > 0 && (
+          <ErrorMessage
+            animalType={selectedAnimalType}
+            message={errorMessages.nameError}
+          />
+        )}
         <div>
           <InputText
             id="species"
@@ -99,6 +116,12 @@ const AnimalForm: React.FC<AnimalFormProps> = ({
             labelText={`Please enter the ${animalType} species`}
           />
         </div>
+        {errorMessages.speciesError.length > 0 && (
+          <ErrorMessage
+            animalType={selectedAnimalType}
+            message={errorMessages.speciesError}
+          />
+        )}
         <div>
           <InputText
             id="favFoods"

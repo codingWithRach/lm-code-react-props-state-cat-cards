@@ -6,6 +6,7 @@ import AnimalCards from "../card/animal_cards";
 import Animal from "../../data/animal";
 import catData from "../../data/cat_data";
 import dogData from "../../data/dog-data";
+import ErrorMessageProvider from "../../context_providers/ErrorMessageContext";
 
 interface AnimalMainProps {
   catCount: number;
@@ -32,14 +33,16 @@ const AnimalMain: React.FC<AnimalMainProps> = ({
     <>
       <main>
         <AnimalCards cats={cats} dogs={dogs} />
-        <AnimalForm
-          cats={cats}
-          catCount={catCount}
-          setCats={setCats}
-          dogs={dogs}
-          dogCount={dogCount}
-          setDogs={setDogs}
-        />
+        <ErrorMessageProvider>
+          <AnimalForm
+            cats={cats}
+            catCount={catCount}
+            setCats={setCats}
+            dogs={dogs}
+            dogCount={dogCount}
+            setDogs={setDogs}
+          />
+        </ErrorMessageProvider>
       </main>
     </>
   );
